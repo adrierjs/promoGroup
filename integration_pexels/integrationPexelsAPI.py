@@ -16,6 +16,3 @@ class IntegrationWithPexelsApi:
             return response.text
         except requests.exceptions.RequestException as error:
             print(f'error connecting to pexels-api: {error}')
-
-
-
