@@ -36,5 +36,4 @@ class DataConverter:
                 list_products.append(product)
         return list_products
 
-dataConverter = DataConverter(dataSite)
-products = dataConverter.namePriceOffer()
+

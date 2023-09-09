@@ -1,6 +1,4 @@
 import requests
-import dotenv
-import os
 class IntegrationWithPexelsApi:
     def __init__(self, site, PEXELS_KEY):
         self.__data = site
@@ -19,9 +17,5 @@ class IntegrationWithPexelsApi:
         except requests.exceptions.RequestException as error:
             print(f'error connecting to pexels-api: {error}')
 
-dotenv.load_dotenv()
-PEXELS_KEY = os.getenv("PEXELS_KEY")
-query = "Samsung Galaxy S20 FE"
-integrator = IntegrationWithPexelsApi("https://api.pexels.com/v1/", PEXELS_KEY=PEXELS_KEY)
-responsePexelAPI = integrator.connectionPexelsAPI(query)
+
 
