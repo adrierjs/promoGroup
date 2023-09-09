@@ -1,5 +1,4 @@
 from bs4 import BeautifulSoup
-
 from integrationSite import dataSite
 
 
@@ -35,12 +34,7 @@ class DataConverter:
                            "price": product_price,
                            "product_link": href}
                 list_products.append(product)
-        # return list_products
-        for product in list_products:
-            # product = " ".join(product['name'].split()[1:5])  # Limita
-            print(product)
-
+        return list_products
 
 dataConverter = DataConverter(dataSite)
-products = dataConverter.imagem()
-# print(products)
+products = dataConverter.namePriceOffer()
