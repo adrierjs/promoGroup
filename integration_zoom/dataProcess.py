@@ -2,11 +2,13 @@ from bs4 import BeautifulSoup
 from integrationSite import dataSite
 from integrationPexelAPIWithZoom import SearchSrcImg, IntegrationWithPexelsApi
 
+
 class DataConverter:
     def __init__(self, dataSite):
         self._dataSite = dataSite
         self.__soup = BeautifulSoup(self._dataSite, 'html.parser')
         self.__elements_with_class = self.__soup.find_all(class_="ProductCard_ProductCard_Inner__tsD4M")
+
     def namePriceOffer(self):
         list_products = []
 
@@ -30,6 +32,7 @@ class DataConverter:
                            "product_link": href,
                            "scr": searchSrcImg.integrationAPIPexel(product_name)}
                 list_products.append(product)
+
         return list_products
 
 

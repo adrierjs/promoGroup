@@ -1,5 +1,6 @@
 import requests
 
+
 class IntegrationWithWebSite:
     def __init__(self, site):
         self._site = site
@@ -14,7 +15,6 @@ class IntegrationWithWebSite:
         except requests.exceptions.RequestException as error:
             raise f'Erro {error}'
 
+
 integration = IntegrationWithWebSite("https://www.zoom.com.br/celular")
 dataSite = integration.websiteConnection()
-
-
