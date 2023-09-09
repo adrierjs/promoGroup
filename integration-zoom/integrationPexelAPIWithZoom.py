@@ -1,11 +1,7 @@
 import json
-
 from integration_pexels.integrationPexelsAPI import IntegrationWithPexelsApi
-from dataProcess import DataConverter
-from integrationSite import dataSite
 import dotenv
 import os
-
 
 class SearchSrcImg:
     def __init__(self, dataSite):
@@ -20,13 +16,14 @@ class SearchSrcImg:
 
         data = json.loads(retorno)
         data = (data['photos'][0])
-        print(data['src']['medium'])
+        return data['src']['large']
 
 
-query = "Samsung Galaxy S20 FE"
 
-searchSrcImg = SearchSrcImg(dataSite)
-searchSrcImg.integrationAPIPexel(query)
+
+
+
+
 
 
 

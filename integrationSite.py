@@ -14,7 +14,7 @@ class IntegrationWithWebSite:
         except requests.exceptions.RequestException as error:
             raise f'Erro {error}'
 
-integration = IntegrationWithWebSite("https://www.zoom.com.br/tv")
+integration = IntegrationWithWebSite("https://www.zoom.com.br/celular")
 dataSite = integration.websiteConnection()
 
 
