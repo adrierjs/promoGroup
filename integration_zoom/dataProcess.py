@@ -20,17 +20,23 @@ class DataConverter:
             product_price = elements.find('p', {'data-testid': 'product-card::price'}).text.strip()
             if href and ("/celular" or '/tv') in href:
                 full_link = f"www.zoom.com.br{href}"
+                scr_img = 'None'
+                if searchSrcImg.integrationAPIPexel(product_name):
+                    scr_img = searchSrcImg.integrationAPIPexel(product_name)
+
                 product = {"name": product_name,
                            "price": product_price,
                            "product_link": full_link,
-                           "scr": searchSrcImg.integrationAPIPexel(product_name)}
+                           "scr": scr_img
+                           }
 
                 list_products.append(product)
             else:
                 product = {"name": product_name,
                            "price": product_price,
                            "product_link": href,
-                           "scr": searchSrcImg.integrationAPIPexel(product_name)}
+                           "scr": scr_img
+                           }
                 list_products.append(product)
 
         return list_products
