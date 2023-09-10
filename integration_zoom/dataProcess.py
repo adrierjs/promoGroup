@@ -19,7 +19,7 @@ class DataConverter:
 
             searchSrcImg = SearchSrcImg()
             responseQueryPexelsAP = searchSrcImg.integrationAPIPexel(query=product_name)
-            src_img = 'None'
+            src_img = None
             if href and ("/celular" or '/tv') in href:
 
                 full_link = f"www.zoom.com.br{href}"
