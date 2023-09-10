@@ -47,5 +47,4 @@ class DataConverter:
 dataConverter = DataConverter(dataSite)
 retorno = (dataConverter.namePriceOffer())
 print(retorno)
-# products = dataConverter.imagem(dataConverter)
 
