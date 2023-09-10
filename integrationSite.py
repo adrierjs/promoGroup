@@ -7,7 +7,6 @@ class IntegrationWithWebSite:
 
     def websiteConnection(self):
         try:
-            # Fazer uma solicitação GET para a página
             response = requests.get(self._site)
             response.raise_for_status()
             return response.text

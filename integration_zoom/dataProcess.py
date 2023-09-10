@@ -13,29 +13,31 @@ class DataConverter:
         list_products = []
 
         for elements in self.__elements_with_class:
-            searchSrcImg = SearchSrcImg(dataSite)
-
             href = elements.get("href")
             product_name = " ".join(elements.find('h2', {'data-testid': 'product-card::name'}).text.strip().split()[1:5])
             product_price = elements.find('p', {'data-testid': 'product-card::price'}).text.strip()
-            if href and ("/celular" or '/tv') in href:
-                full_link = f"www.zoom.com.br{href}"
-                scr_img = 'None'
-                if searchSrcImg.integrationAPIPexel(product_name):
-                    scr_img = searchSrcImg.integrationAPIPexel(product_name)
 
+            searchSrcImg = SearchSrcImg()
+            responseQueryPexelsAP = searchSrcImg.integrationAPIPexel(query=product_name)
+            src_img = 'None'
+            if href and ("/celular" or '/tv') in href:
+
+                full_link = f"www.zoom.com.br{href}"
+                if responseQueryPexelsAP:
+                    src_img = responseQueryPexelsAP
                 product = {"name": product_name,
                            "price": product_price,
                            "product_link": full_link,
-                           "scr": scr_img
-                           }
+                           "src": src_img}
 
                 list_products.append(product)
             else:
+                if responseQueryPexelsAP:
+                    src_img = responseQueryPexelsAP
                 product = {"name": product_name,
                            "price": product_price,
-                           "product_link": href,
-                           "scr": scr_img
+                           "product_link": full_link,
+                           "src": src_img
                            }
                 list_products.append(product)
 
@@ -43,6 +45,7 @@ class DataConverter:
 
 
 dataConverter = DataConverter(dataSite)
-print(dataConverter.namePriceOffer())
+retorno = (dataConverter.namePriceOffer())
+print(retorno)
 # products = dataConverter.imagem(dataConverter)
 

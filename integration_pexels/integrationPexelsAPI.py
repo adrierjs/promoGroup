@@ -13,6 +13,12 @@ class IntegrationWithPexelsApi:
         try:
             response = requests.request("GET", url, headers=headers, data=payload)
             response.raise_for_status()
-            return response.text
+            return response.text, response.status_code
         except requests.exceptions.RequestException as error:
-            print(f'error connecting to pexels-api: {error}')
+            return (f'Error connecting to pexels-api: {error}'), None
+
+
+
+
+
+
