@@ -47,4 +47,3 @@ class DataConverter:
 dataConverter = DataConverter(dataSite)
 retorno = (dataConverter.namePriceOffer())
 print(retorno)
-
