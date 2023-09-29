@@ -1,9 +1,13 @@
 import json
-from scr.integration_pexels.integrationPexelsAPI import IntegrationWithPexelsApi
+from integration_pexels.integrationPexelsAPI import IntegrationWithPexelsApi
+import dotenv
+import os
+import time
 
 class SearchSrcImg:
     def __init__(self):
         self.__integrator = IntegrationWithPexelsApi()
+
 
     def integrationAPIPexel(self, query):
         responsePexelAPI, status_code = self.__integrator.connectionPexelsAPI(query)
@@ -12,6 +16,8 @@ class SearchSrcImg:
             data = (data['photos'][0])
             return data['src']['large']
         return None
+
+
 
 
 
