@@ -1,5 +1,5 @@
 import unittest
-from integration_pexels.integrationPexelsAPI import IntegrationWithPexelsApi
+from scr.integration_pexels.integrationPexelsAPI import IntegrationWithPexelsApi
 
 class TestIntegrationPexelsAPI(unittest.TestCase):
     def __init__(self, *args, **kwargs):

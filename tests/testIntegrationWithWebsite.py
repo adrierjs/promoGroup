@@ -1,5 +1,5 @@
 import unittest
-from integrationSite import IntegrationWithWebSite
+from scr.integrationSite import IntegrationWithWebSite
 
 class TestIntegrationWithWebSite(unittest.TestCase):
     def setUp(self):
@@ -7,7 +7,6 @@ class TestIntegrationWithWebSite(unittest.TestCase):
 
     def test_website_connection_successful(self):
         response, status_code = self.site.websiteConnection()
-
         self.assertEqual(status_code, 200)
 
     def test_website_connection_failure(self):

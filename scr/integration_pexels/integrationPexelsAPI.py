@@ -20,8 +20,6 @@ class IntegrationWithPexelsApi:
         except requests.exceptions.RequestException as error:
             return (f'Error connecting to pexels-api: {error}'), None
 
-c1 = IntegrationWithPexelsApi()
 
-print(type((c1.connectionPexelsAPI('Teste'))))
 
 
