@@ -38,3 +38,6 @@ def Login(request):
 
 def index(request):
     return render(request, "index.html")
+
+def notebook(request):
+    return render(request,'notebook.html')

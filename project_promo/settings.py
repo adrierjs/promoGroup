@@ -84,8 +84,12 @@ WSGI_APPLICATION = 'project_promo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': NAME_DATABASE,
+        'USER': USER_DATABASE,
+        'PASSWORD': PASSWORD_DATABASE,
+        'HOST': HOST_DATABASE,
+        'PORT': '5432',
     }
 }
 
