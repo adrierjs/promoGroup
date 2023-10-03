@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 
 def cadastro(request):
     if request.method == 'POST':
@@ -38,3 +38,9 @@ def Login(request):
 
 def index(request):
     return render(request, "index.html")
+
+def notebook(request):
+    return render(request,'notebook.html')
+
+def contato(request):
+    return render(request,'contato.html')
