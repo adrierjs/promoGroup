@@ -1,5 +1,7 @@
 import unittest
+
 from scr.integrationSite import IntegrationWithWebSite
+
 
 class TestIntegrationWithWebSite(unittest.TestCase):
     def setUp(self):
