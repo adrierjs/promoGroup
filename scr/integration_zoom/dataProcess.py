@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from scr.integrationSite import IntegrationWithWebSite
-# from integrationPexelAPIWithZoom import SearchSrcImg
+from integrationPexelAPIWithZoom import SearchSrcImg
 
 class DataConverter:
     def __init__(self, dataSite):
@@ -16,15 +16,15 @@ class DataConverter:
             productName = " ".join(elements.find('h2', {'data-testid': 'product-card::name'}).text.strip().split()[1:5])
             productPrice = elements.find('p', {'data-testid': 'product-card::price'}).text.strip()
 
-            # searchSrcImg = SearchSrcImg()
-            # responseQueryPexelsAP = searchSrcImg.integrationAPIPexel(query=productName)
+            searchSrcImg = SearchSrcImg()
+            responseQueryPexelsAP = searchSrcImg.integrationAPIPexel(query=productName)
             scrImg = None
 
             # if href and ('/celular' in href or '/tv' in href):
 
             fullLink = f"www.zoom.com.br{href}"
-            # if responseQueryPexelsAP:
-            #     scrImg = responseQueryPexelsAP
+            if responseQueryPexelsAP:
+                scrImg = responseQueryPexelsAP
             product = {"name": productName,
                        "price": productPrice,
                        "productLink": fullLink,
@@ -45,12 +45,13 @@ class DataConverter:
 
         return listProducts
 
-# links = ["https://www.zoom.com.br/celular","https://www.zoom.com.br/tv"]
-#
-# for link in links:
-#
-#     integration = IntegrationWithWebSite(link)
-#     dataSite, statusCode = integration.websiteConnection()
-#     dataConverter = DataConverter(dataSite)
-#     retorno = (dataConverter.namePriceOffer())
-#     print(retorno)
+links = ["https://www.zoom.com.br/celular","https://www.zoom.com.br/tv"]
+
+for link in links:
+
+    integration = IntegrationWithWebSite(link)
+    dataSite, statusCode = integration.websiteConnection()
+    dataConverter = DataConverter(dataSite)
+    retorno = (dataConverter.namePriceOffer())
+    print(retorno)
+
