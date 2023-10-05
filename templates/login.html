@@ -39,14 +39,14 @@
 
                 <div class="uk-margin uk-text-center">
                     <div class="uk-inline">
-                        <span class="uk-form-icon uk-form-icon" uk-icon="icon: lock"></span>
-                        <input id="pass" name="password" id="password" class="uk-input uk-form-width-large" type="password"
+                        <a class="uk-form-icon uk-form-icon" href="#" id="togglePassword" uk-icon="icon: lock"></a>
+                        <input id="password" name="password" class="uk-input uk-form-width-large" type="password"
                             aria-label="Not clickable icon" placeholder="Senha" required oninput="passwordValidation()">
                     </div>
                 </div>
 
 
-                <div class="termos"><a href="#" uk-toggle>Esqueci a senha</a></div>
+                <div class="termos"><a href="{% url 'redefinir_email' %}" uk-toggle>Esqueci a senha</a></div>
 
 
 

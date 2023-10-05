@@ -46,6 +46,15 @@
                                 <a href="" class="dropdown-item">Geladeiras</a>
                             </div>
                         </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Perfil <i
+                                    class="fa fa-angle-down mt-1"></i></a>
+                            <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+                                <a href="#" class="dropdown-item">{{ user.first_name }}</a>
+                                <a href="#" class="dropdown-item">Configurações</a>
+                                <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+                            </div>
+                        </div>
                         <a href="{% url 'contato' %}" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
