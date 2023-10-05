@@ -83,8 +83,15 @@ function validar_form() {
       show();
       setTimeout(function () {
         form.submit();
-      }, 1000); // Aguarda 5000 milissegundos (5 segundos) antes de enviar o formulário
+      }, 1000);
       return true;
     }
   }
+
+
+
+
+
+
+
   
