@@ -32,7 +32,7 @@ class DataConverter:
             product = {"name": productName,
                        "price": productPrice,
                        "productLink": fullLink,
-                       "src": scrImg,
+                       "srcImg": scrImg,
                        "domain": self.__domain
                        }
             listProducts.append(product)

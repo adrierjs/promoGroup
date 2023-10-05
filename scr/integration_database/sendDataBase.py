@@ -4,7 +4,7 @@ from scr.integration_database.connectionDataBase import cursor, conn
 import re
 import json
 
-links = ["https://www.zoom.com.br/celular","https://www.zoom.com.br/geladeira"]
+links = ["https://www.zoom.com.br/celular","https://www.zoom.com.br/geladeira","https://www.buscape.com.br/celular"]
 
 try:
     for link in links:
