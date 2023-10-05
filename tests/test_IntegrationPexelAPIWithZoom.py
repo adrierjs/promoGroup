@@ -1,5 +1,5 @@
 import unittest
-from scr.integration_zoom.integrationPexelAPIWithZoom import SearchSrcImg
+from scr.integration_zoom_buscape.integrationPexelAPIWithZoom import SearchSrcImg
 
 class TestIntegrationPexelsAPI(unittest.TestCase):
     def test_connectionPexelsAPI(self):

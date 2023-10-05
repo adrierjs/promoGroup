@@ -1,7 +1,7 @@
 import unittest
-from scr.integration_zoom.dataProcess import DataConverter
+from scr.integration_zoom_buscape.dataProcess import DataConverter
 from scr.integrationSite import IntegrationWithWebSite
-from scr.integration_zoom.integrationPexelAPIWithZoom import SearchSrcImg
+from scr.integration_zoom_buscape.integrationPexelAPIWithZoom import SearchSrcImg
 
 class TestIntegrationPexelsAPI(unittest.TestCase):
     def __init__(self):
