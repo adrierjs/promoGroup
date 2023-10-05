@@ -64,15 +64,6 @@ document.querySelector('#form').addEventListener('submit', function(event) {
     }
 });
 
-function show(){
-    UIkit.notification({
-        message: 'Cadastrado com sucesso',
-        status: 'success',
-        pos: 'top-right',
-        timeout: 5000
-    });
-}
-
 function validar_form() {
     nameValidation();
     emailValidation();
@@ -80,7 +71,6 @@ function validar_form() {
     passwordMatchValidation();
   
     if (name_validation && email_validation && senha_validation && senha_confirmar_validation) {
-      show();
       setTimeout(function () {
         form.submit();
       }, 1000);

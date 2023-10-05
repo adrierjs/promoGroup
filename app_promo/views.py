@@ -21,8 +21,6 @@ def cadastro(request):
                                             password=password)
             user.save()
             messages.error(request, "Usuário cadastrado com sucesso",extra_tags='cadastro_feito')
-            login(request, user)
-            return redirect('/')
     return render(request, "cadastro.html")
 
 def Login(request):
