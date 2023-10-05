@@ -11,7 +11,6 @@ class SearchSrcImg:
             data = json.loads(responsePexelAPI)
             if data['total'] == 0:
                 return None
-            print(data)
             data = (data['hits'][0])
             return data.get('webformatURL', '')
 

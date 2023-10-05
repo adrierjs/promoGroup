@@ -19,8 +19,7 @@ class DataConverter:
             productName = " ".join(elements.find('h2', {'data-testid': 'product-card::name'}).text.strip().split()[1:5])
             productPrice = elements.find('p', {'data-testid': 'product-card::price'}).text.strip()
 
-
-            # responseQueryPexelsAP = self.__searchSrcImg.integrationAPIPexel(query=productName)
+            responseQueryPexelsAP = self.__searchSrcImg.integrationAPIPexel(query=productName)
 
             # if href and ('/celular' in href or '/tv' in href):
 
