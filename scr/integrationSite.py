@@ -12,3 +12,5 @@ class IntegrationWithWebSite:
         except requests.exceptions.RequestException as error:
             raise f'Erro na requisição: {error}'
 
+
+

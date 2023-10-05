@@ -1,4 +1,4 @@
-from scr.integration_zoom.integrationPexelAPIWithZoom import SearchSrcImg
+from scr.integration_zoom_buscape.integrationPexelAPIWithZoom import SearchSrcImg
 
 from scr.integrationSite import IntegrationWithWebSite
 

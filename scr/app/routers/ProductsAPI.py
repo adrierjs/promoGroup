@@ -1,11 +1,11 @@
 from flask import Flask, jsonify
 from scr.integrationSite import IntegrationWithWebSite
-from scr.integration_zoom.dataProcess import DataConverter
+from scr.integration_zoom_buscape.dataProcess import DataConverter
 
 app = Flask(__name__)
 
 @app.route('/api/celular', methods=['GET'])
-def get_exemplo():
+def getCelular():
     integration = IntegrationWithWebSite("https://www.zoom.com.br/celular")
     dataSite, statusCode = integration.websiteConnection()
     dataConverter = DataConverter(dataSite)
