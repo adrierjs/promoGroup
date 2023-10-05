@@ -9,10 +9,14 @@ class SearchSrcImg:
         responsePexelAPI, status_code = self.__integrator.connectionPexelsAPI(query)
         if status_code == 200:
             data = json.loads(responsePexelAPI)
-            data = (data['photos'][0])
-            return data['src']['large']
+            if data['total'] == 0:
+                return None
+            print(data)
+            data = (data['hits'][0])
+            return data.get('webformatURL', '')
+
+        else:
+            raise Exception(f"Erro na integração com a API Pexels. Código de status: {status_code}")
         return None
-
-
 
 

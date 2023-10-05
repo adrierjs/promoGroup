@@ -2,7 +2,6 @@ import psycopg2
 from dotenv import load_dotenv
 import os
 load_dotenv()
-import psycopg2
 
 # Parâmetros de conexão com o banco de dados PostgreSQL
 db_params = {

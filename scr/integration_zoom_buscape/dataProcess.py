@@ -21,11 +21,10 @@ class DataConverter:
 
 
             # responseQueryPexelsAP = self.__searchSrcImg.integrationAPIPexel(query=productName)
-            scrImg = None
 
             # if href and ('/celular' in href or '/tv' in href):
 
-
+            scrImg = None
             fullLink = f"www.{self.__domain}.com.br{href}"
             # if responseQueryPexelsAP:
             #     scrImg = responseQueryPexelsAP

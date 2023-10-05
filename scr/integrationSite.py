@@ -13,4 +13,3 @@ class IntegrationWithWebSite:
             raise f'Erro na requisição: {error}'
 
 
-
