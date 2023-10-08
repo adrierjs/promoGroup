@@ -12,6 +12,7 @@ class IntegrationWithWebSite:
             return response.text
 
         except requests.exceptions.RequestException as error:
+
             raise f'Erro {error}'
 
 

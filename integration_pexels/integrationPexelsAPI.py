@@ -8,18 +8,21 @@ class IntegrationWithPexelsApi:
         self.__pexels_key = os.getenv("PEXELS_KEY")
 
     def connectionPexelsAPI(self, query):
-        url = f"https://api.pexels.com/v1/search?query={query}&per_page=1&locale=pt-BR"
-        payload = {}
-        headers = {
-            'Authorization': self.__pexels_key,
+        url = f"https://pixabay.com/api/"
+        params = {
+            'key': self.__pexels_key,
+            'q': query,
+            'per_page': 3
         }
         try:
-            response = requests.request("GET", url, headers=headers, data=payload)
+            response = requests.request("GET", url, params=params)
             response.raise_for_status()
             return response.text, response.status_code
         except requests.exceptions.RequestException as error:
             return (f'Error connecting to pexels-api: {error}'), None
 
+<<<<<<< HEAD:scr/integration_pexels/integrationPexelsAPI.py
+=======
 
 
 
@@ -28,3 +31,4 @@ class IntegrationWithPexelsApi:
 
 
 
+>>>>>>> main:integration_pexels/integrationPexelsAPI.py
