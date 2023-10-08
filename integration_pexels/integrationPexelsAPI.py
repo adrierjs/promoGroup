@@ -21,3 +21,14 @@ class IntegrationWithPexelsApi:
         except requests.exceptions.RequestException as error:
             return (f'Error connecting to pexels-api: {error}'), None
 
+<<<<<<< HEAD:scr/integration_pexels/integrationPexelsAPI.py
+=======
+
+
+
+
+
+
+
+
+>>>>>>> main:integration_pexels/integrationPexelsAPI.py
