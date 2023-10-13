@@ -26,7 +26,7 @@ def getArcondicionado():
     return fetch_product_data('ar')
 
 @product_routes.route('/livros', methods=['GET'])
-def getArcondicionado():
+def getLivros():
     return fetch_product_data('livros')
 
 def fetch_product_data(category):
