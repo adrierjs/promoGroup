@@ -17,6 +17,14 @@ def getNotebook():
 def getGeladeira():
     return fetch_product_data('geladeira')
 
+@product_routes.route('/tv', methods=['GET'])
+def getTv():
+    return fetch_product_data('tv')
+
+@product_routes.route('/ar-condicionado', methods=['GET'])
+def getArcondicionado():
+    return fetch_product_data('ar')
+
 def fetch_product_data(category):
     with conn.cursor() as cursor:
         sql_query = """
