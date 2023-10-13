@@ -25,6 +25,10 @@ def getTv():
 def getArcondicionado():
     return fetch_product_data('ar')
 
+@product_routes.route('/livros', methods=['GET'])
+def getArcondicionado():
+    return fetch_product_data('livros')
+
 def fetch_product_data(category):
     with conn.cursor() as cursor:
         sql_query = """
