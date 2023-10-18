@@ -7,7 +7,7 @@ from src.app.routers.routes import product_routes
 app = Flask(__name__)
 
 # Configure o CORS
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.register_blueprint(product_routes)
 log_filename = 'app_logs.log'
