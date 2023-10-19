@@ -27,32 +27,33 @@ fetch('http://52.87.204.54:5000/celular')
   })
   .catch(error => console.error('Ocorreu um erro:', error));
 
-function showGallery(telefonesInfo, ul) {
-  ul.innerHTML = '';
-
-  telefonesInfo.forEach((item, index) => {
-    const li = document.createElement("li");
-    li.classList.add('col-lg-3', 'col-md-4', 'col-sm-6', 'pb-1');
-    li.innerHTML = `
-    <div class="product-item bg-light mb-4">
-    <div class="product-img position-relative overflow-hidden">
-        <!-- Como não há informações de imagem no JSON, você pode adicionar uma imagem padrão ou deixar em branco -->
-        <img class="img-fluid w-100" src="${item.image}" alt="">
-        <div class="product-action">
-            <a class="btn btn-outline-dark btn-square" href="${item.link}"><i class="fa fa-search"></i></a>
-        </div>
-    </div>
-    <div class="text-center py-4">
-        <a class="h6 text-decoration-none text-truncate" href="${item.link}" id="phoneName${index}">${item.nome}</a>
-        <div class="d-flex align-items-center justify-content-center mt-2">
-            <h5 id="price${index}">${item.preco}</h5>
-        </div>
-    </div>
-</div>
-        `;
-    ul.appendChild(li);
-  });
-}
+  function showGallery(telefonesInfo, ul) {
+    ul.innerHTML = '';
+  
+    telefonesInfo.forEach((item, index) => {
+      const li = document.createElement("li");
+      li.classList.add('col-lg-3', 'col-md-4', 'col-sm-6', 'pb-1');
+      const link = `http://${item.link}`;
+      li.innerHTML = `
+      <div class="product-item bg-light mb-4">
+      <div class="product-img position-relative overflow-hidden">
+          <img class="img-fluid w-100" src="${item.image}" alt="">
+          <div class="product-action">
+              <a class="btn btn-outline-dark btn-square" href="${link}"><i class="fa fa-search"></i></a>
+          </div>
+      </div>
+      <div class="text-center py-4">
+          <a class="h6 text-decoration-none text-truncate" href="${link}" id="phoneName${index}">${item.nome}</a>
+          <div class="d-flex align-items-center justify-content-center mt-2">
+              <h5 id="price${index}">${item.preco}</h5>
+          </div>
+      </div>
+  </div>
+          `;
+      ul.appendChild(li);
+    });
+  }
+  
 
 
 
