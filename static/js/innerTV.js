@@ -1,7 +1,7 @@
 const telefonesInfo = [];
 
 
-fetch('http://52.87.204.54:5000/notebook')
+fetch('http://52.87.204.54:5000/tv')
   .then(res => res.json())
   .then(data => {
     console.log('Dados da API:', data);
