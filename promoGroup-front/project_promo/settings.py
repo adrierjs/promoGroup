@@ -135,3 +135,10 @@ SELENIUM_EXECUTABLE_PATH = './chromedriver'  # Substitua pelo caminho para o chr
 SELENIUM_OPTIONS = {
     'headless': True,
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'suportepromogroup@gmail.com'
+EMAIL_HOST_PASSWORD = 'carj tvab bptk bbgh'

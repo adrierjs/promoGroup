@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 def cadastro(request):
     if request.method == 'POST':
@@ -20,6 +23,16 @@ def cadastro(request):
                                             first_name=first_name,
                                             password=password)
             user.save()
+            # Envie o e-mail de confirmação
+            subject = 'Cadastro Realizado com Sucesso'
+            from_email = 'suportepromogroup@gmail.com '
+            recipient_list = [email]
+
+            html_message = render_to_string('registro_feito.html', {'first_name': first_name})
+            plain_message = strip_tags(html_message)  # Remove tags HTML para o corpo de texto simples
+
+            send_mail(subject, plain_message, from_email, recipient_list, html_message=html_message)
+
             messages.error(request, "Usuário cadastrado com sucesso",extra_tags='cadastro_feito')
     return render(request, "cadastro.html")
 
@@ -69,3 +82,15 @@ def notebook(request):
 
 def contato(request):
     return render(request,'contato.html')
+
+def geladeira(request):
+    return render(request,'geladeira.html')
+
+def tv(request):
+    return render(request,'tv.html')
+
+def livro(request):
+    return render(request,'livros.html')
+
+def ar_condicionado(request):
+    return render(request,'ar_condicionado.html')

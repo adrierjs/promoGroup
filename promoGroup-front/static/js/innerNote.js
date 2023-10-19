@@ -1,96 +1,77 @@
-const listaNotebooks = [
-    "Dell XPS 13",
-    "MacBook Air",
-    "HP Spectre x360",
-    "Lenovo ThinkPad X1 Carbon",
-    "Asus ZenBook",
-    "Microsoft Surface Laptop",
-    "Acer Swift 3",
-    "LG Gram"
-];
+const telefonesInfo = [];
 
-const priceNotebooks = [
-    "R$ 3.000",
-    "R$ 2.500",
-    "R$ 1.800",
-    "R$ 2.200",
-    "R$ 1.500",
-    "R$ 2.000",
-    "R$ 1.200",
-    "R$ 1.700",
-];
 
-const listaLinksNotebooks = [
-    "https://www.link9.com",
-    "https://www.link10.com",
-    "https://www.link11.com",
-    "https://www.link12.com",
-    "https://www.link13.com",
-    "https://www.link14.com",
-    "https://www.link15.com",
-    "https://www.link16.com"
-];
+fetch('http://52.87.204.54:5000/notebook')
+  .then(res => res.json())
+  .then(data => {
+    console.log('Dados da API:', data);
 
-const notebooksInfo = [];
+    data.forEach(product => {
+      const link = product.productLink.replace('http://127.0.0.1:8000/api/', '');
 
-for (let index = 0; index < listaNotebooks.length; index++) {
-    notebooksInfo.push({
-        nome: listaNotebooks[index],
-        preco: priceNotebooks[index],
-        link: listaLinksNotebooks[index]
+      telefonesInfo.push({
+        nome: product.name,
+        preco: product.price,
+        link: link,
+        image: product.srcImg
+      });
     });
-}
 
-const jsonProdutos = JSON.stringify(notebooksInfo, null, 2);
-const produtos = JSON.parse(jsonProdutos);
+    console.log(telefonesInfo)
 
-console.log(jsonProdutos);
+    const jsonTelefones = JSON.stringify(telefonesInfo, null, 2);
+    console.log(jsonTelefones);
 
-const ul = document.getElementById('listanote'); // Use o ID 'listanote'
+    const ul = document.getElementById('listaSmart');
+    showGallery(telefonesInfo, ul);
+  })
+  .catch(error => console.error('Ocorreu um erro:', error));
 
-showGalery(jsonProdutos);
-function showGalery(jsonProdutos) {
-    const ul = document.getElementById('listanote'); // Use o ID 'listanote'
-    ul.innerHTML = '';
+function showGallery(telefonesInfo, ul) {
+  ul.innerHTML = '';
 
-    produtos.forEach((item, index) => {
-        const li = document.createElement("li");
-        li.classList.add('col-lg-3', 'col-md-4', 'col-sm-6', 'pb-1');
-        li.innerHTML = `
-            <div class="product-item bg-light mb-4">
-                <div class="product-img position-relative overflow-hidden">
-                    <!-- Como não há informações de imagem no JSON, você pode adicionar uma imagem padrão ou deixar em branco -->
-                    <img class="img-fluid w-100" src="/static/img/product-1.jpg" alt="">
-                    <div class="product-action">
-                        <a class="btn btn-outline-dark btn-square" href="${item.link}"><i class="fa fa-search"></i></a>
-                    </div>
-                </div>
-                <div class="text-center py-4">
-                    <a class="h6 text-decoration-none text-truncate" href="${item.link}" id="productName${index}">${item.nome}</a>
-                    <div class="d-flex align-items-center justify-content-center mt-2">
-                        <h5 id="productPrice${index}">${item.preco}</h5>
-                    </div>
-                </div>
-            </div>
+  telefonesInfo.forEach((item, index) => {
+    const li = document.createElement("li");
+    li.classList.add('col-lg-3', 'col-md-4', 'col-sm-6', 'pb-1');
+    li.innerHTML = `
+    <div class="product-item bg-light mb-4">
+    <div class="product-img position-relative overflow-hidden">
+        <!-- Como não há informações de imagem no JSON, você pode adicionar uma imagem padrão ou deixar em branco -->
+        <img class="img-fluid w-100" src="${item.image}" alt="">
+        <div class="product-action">
+            <a class="btn btn-outline-dark btn-square" href="${item.link}"><i class="fa fa-search"></i></a>
+        </div>
+    </div>
+    <div class="text-center py-4">
+        <a class="h6 text-decoration-none text-truncate" href="${item.link}" id="phoneName${index}">${item.nome}</a>
+        <div class="d-flex align-items-center justify-content-center mt-2">
+            <h5 id="price${index}">${item.preco}</h5>
+        </div>
+    </div>
+</div>
         `;
-        ul.appendChild(li);
-    });
+    ul.appendChild(li);
+  });
 }
 
+
+
+// Adicione um evento de escuta ao campo de entrada
 const input = document.getElementById('product-input');
 input.addEventListener('input', filtrarLista);
 
 function filtrarLista() {
-    const ul = document.getElementById('listanote');
-    const textoFiltrado = input.value.toLowerCase();
+    const ul = document.getElementById('listaSmart');
+    const textoFiltrado = input.value.toLowerCase(); // Obtenha o texto inserido e converta para minúsculas para comparação
 
+    // Iterar sobre as <li> e verificar se o texto filtrado está contido no nome do telefone
     const liItens = ul.querySelectorAll('li');
     liItens.forEach((li) => {
         const nomeItem = li.querySelector('.h6').textContent.toLowerCase();
         if (nomeItem.includes(textoFiltrado)) {
-            li.style.display = 'block';
+            li.style.display = 'block'; // Mostrar a <li> se corresponder ao filtro
         } else {
-            li.style.display = 'none';
+            li.style.display = 'none'; // Ocultar a <li> se não corresponder ao filtro
         }
     });
 }

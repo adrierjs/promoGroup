@@ -10,5 +10,9 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('notebook/', views.notebook, name='notebook'),
     path('redefinir_email/', views.redefinir_email, name='redefinir_email'),
-    path('contato/', views.contato, name='contato')
+    path('contato/', views.contato, name='contato'),
+    path('geladeira/', views.geladeira, name='geladeira'),
+    path('tv/', views.tv, name='tv'),
+    path('livro/', views.livro, name='livro'),
+    path('ar_condicionado/', views.ar_condicionado, name='ar_condicionado')
 ]
