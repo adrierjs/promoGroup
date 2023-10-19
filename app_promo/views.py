@@ -28,7 +28,7 @@ def cadastro(request):
             from_email = 'suportepromogroup@gmail.com '
             recipient_list = [email]
 
-            html_message = render_to_string('registration_email.html', {'first_name': first_name})
+            html_message = render_to_string('registro_feito.html', {'first_name': first_name})
             plain_message = strip_tags(html_message)  # Remove tags HTML para o corpo de texto simples
 
             send_mail(subject, plain_message, from_email, recipient_list, html_message=html_message)
