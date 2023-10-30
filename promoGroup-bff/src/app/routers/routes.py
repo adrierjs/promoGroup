@@ -51,7 +51,6 @@ def fetch_product_data(category):
              LATERAL jsonb_array_elements(dados_json) AS elem
         WHERE dados_json @> %s
         ORDER BY created_at DESC
-        LIMIT 1;
     """
     category_json = json.dumps([{"category": category}])
     g.db_conn.execute(sql_query, [category_json])
