@@ -1,10 +1,10 @@
 import os
 from flask import Flask
 import logging
-from flask_cors import CORS  # Importe a extensão Flask-CORS
+from flask_cors import CORS
 from src.app.routers.routes import product_routes
 
-app = Flask(__name__)
+app = Flask(__name)
 
 CORS(app, resources={r"/*": {"origins": "*"}})
 
