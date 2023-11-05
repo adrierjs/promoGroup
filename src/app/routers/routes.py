@@ -51,9 +51,10 @@ def fetch_product_data(category):
         ORDER BY created_at DESC
         LIMIT 1;
     """
-    cursor.execute(sql_query, (category,))
-    result = cursor.fetchall()
-    if result:
-        return jsonify(result[0][0])
-    response = make_response('Not Found', 404)
-    return response
+    try:
+        cursor.execute(sql_query, (category,))
+        result = cursor.fetchone()
+        if result:
+            return result[0]
+    except Exception as e:
+        return f'Erro na consulta, {e}'
