@@ -13,9 +13,9 @@ db_params = {
 try:
     conn = psycopg2.connect(**db_params)
 
-
 except psycopg2.Error as e:
-    print("Erro ao conectar ao banco de dados PostgreSQL:", e)
+    with open('error.log', 'a') as log_file:
+        log_file.write(f"Erro ao conectar ao banco de dados PostgreSQL: {e}\n")
 
 
 
