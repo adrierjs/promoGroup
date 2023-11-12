@@ -20,6 +20,5 @@ def log_requests_to_console():
 
 
 if __name__ == '__main__':
-    os.environ['FLASK_ENV'] = 'development'
     log_requests_to_console()
     app.run(host='0.0.0.0', port=5000)
