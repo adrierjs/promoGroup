@@ -1,0 +1,10 @@
+version: '3'
+services:
+  promo-group-front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: promo-group-front
+    ports:
+      - "8000:8000"
+
