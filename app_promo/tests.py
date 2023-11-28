@@ -3,6 +3,10 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
 
+from django.test import LiveServerTestCase
+from selenium.webdriver import Edge
+from selenium.webdriver.common.keys import Keys
+
 class ViewTestCase(TestCase):
     def test_cadastro_url(self):
         response = self.client.get(reverse('cadastro'))
@@ -30,20 +34,6 @@ class ViewTestCase(TestCase):
         self.assertTemplateUsed(response, 'contato.html')
 
 class CadastroViewTest(TestCase):
-    def test_cadastro_com_sucesso(self):
-        data = {
-            'email': 'ronildo@gmail.com',
-            'nome': 'Ronildo',
-            'password': 'Ronildo'
-        }
-
-        response = self.client.post(reverse('cadastro'), data)
-
-        self.assertRedirects(response, reverse('index'))
-
-        self.assertTrue(User.objects.filter(username='ronildo@gmail.com').exists())
-
-        messages = [m.message for m in get_messages(response.wsgi_request)]
 
     def test_cadastro_com_email_existente(self):
         User.objects.create_user(username='ronildolima@gmail.com', email='ronildolima@gmail.com', password='ronildo123')
@@ -108,3 +98,38 @@ class IndexViewTest(TestCase):
         self.assertEqual(response.context['user'], self.user)
 
         self.assertTemplateUsed(response, 'index.html')
+
+# TESTES E2E
+class MyE2ETest(LiveServerTestCase):
+    def setUp(self):
+        self.driver = Edge(executable_path='/promogroup-front/app_promo/msedgedriver')
+
+    def tearDown(self):
+        self.driver.quit()
+
+    def test_abrir_site(self):
+        self.driver.get(self.live_server_url)
+
+        self.assertIn("PromoGroup", self.driver.title)
+
+    def test_pesquisa(self):
+        self.driver.get(self.live_server_url)
+
+        search_input = self.driver.find_element_by_id("product-input")
+        search_input.send_keys("Smartphones")
+        search_input.submit()
+
+        self.assertIn("Smartphones", self.driver.page_source)
+
+    def test_prencher_formulario(self):
+        self.driver.get(self.live_server_url)
+
+        self.driver.find_element_by_id("name").send_keys("Ronildo")
+        self.driver.find_element_by_id("email").send_keys("ronildo@gmail.com")
+        self.driver.find_element_by_id("password").send_keys("ronildo123")
+        self.driver.find_element_by_id("pass2").send_keys("ronildo123")
+
+        self.driver.find_element_by_id("btn-submit").click()
+
+        success_message = self.driver.find_element_by_class_name("uk-alert-success")
+        self.assertTrue(success_message.is_displayed())
